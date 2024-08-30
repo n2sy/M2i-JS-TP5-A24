@@ -26,4 +26,28 @@ function init() {
 
 init();
 
+function switchPlayer() {
+  currentScore = 0;
+  document.getElementById(`current--${activePlayer}`).textContent =
+    currentScore;
+  activePlayer = activePlayer == 0 ? 1 : 0;
+  player0.classList.toggle("player--active");
+  player1.classList.toggle("player--active");
+}
+
 document.querySelector("#btn-roll-dice").addEventListener("click", () => {});
+
+document.getElementById("btn-roll-dice").addEventListener("click", () => {
+  if (isPlaying) {
+    let diceNumber = Math.trunc(Math.random() * 6) + 1;
+    diceImg.hidden = false;
+    diceImg.src = `dice-${diceNumber}.png`;
+    if (diceNumber != 1) {
+      currentScore += diceNumber;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      switchPlayer();
+    }
+  }
+});
