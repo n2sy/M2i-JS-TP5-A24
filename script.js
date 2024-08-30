@@ -25,3 +25,5 @@ function init() {
 }
 
 init();
+
+document.querySelector("#btn-roll-dice").addEventListener("click", () => {});
